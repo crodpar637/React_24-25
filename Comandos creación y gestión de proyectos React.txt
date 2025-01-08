@@ -1,0 +1,70 @@
+// Descargar e instalar Node.js
+
+// Permitir ejecución de scripts. Ejecutar en power Shell como administrador
+set-executionpolicy unrestricted
+
+// Crear proyecto con Vite
+npm create vite@latest helloworld
+
+// Continuamos instalando las librerias básicas de react
+cd helloworld
+npm install
+
+// Ejecutar proyecto
+npm run dev
+
+// Desactivar warning linter en eslint.config.js
+rules: {
+
+ 'react/prop-types': 'off', // Desactiva la validación de PropTypes
+
+}
+---------------------------------------------------------------------
+MUI 
+// Instalación de MUI
+npm install @mui/material @emotion/react @emotion/styled
+
+// Instalación de Roboto
+npm install @fontsource/roboto
+
+// Importación en App.jsx
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+/// Instalacion de iconos
+npm install @mui/icons-material
+-------------------------------------------------
+MDBootstrap
+
+// Instalación de MDBootstrap
+npm i mdb-react-ui-kit
+
+// Intalación de fontawesome
+npm i @fortawesome/fontawesome-free
+
+// Importación de css
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+// Importación de Roboto en index.html
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+
+// Establecer fuente en index.css
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+--------------------------------------------------------------------
+
+// Instalar las siguientes extensiones en VSCode:
+ESLint: un linter, que es una herramienta que detecta errores en el código.
+Babel Javascript: resalta la sintaxis de React.js
+Error Lens: detecta y muestra errores de JS
+Live Server: servidor local de pruebas (imprescindible)
+html to JSX: convierte HTML en JSX
+XML Tools (opcional)
+vscode-icons (opcional)
+Prettier, un formateador de código (opcional)
+

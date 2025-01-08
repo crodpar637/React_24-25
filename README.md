@@ -70,3 +70,67 @@ Tus alumnos podrán clonar el repositorio y descargar los cambios con:
 git clone <URL_DEL_REPOSITORIO>
 git pull
 ``` 
+
+Para crear una combinación de teclas que permita lanzar el proceso de sincronización automática con Git en VSCode, puedes configurar una **tarea personalizada** y asignarle un atajo de teclado. Aquí están los pasos detallados para sincronizar los cambios en GitHub.
+
+---
+
+### **1. Crear una tarea personalizada en VSCode**
+1. **Abre el archivo de configuración de tareas:**
+   - Ve a `Terminal > Configure Tasks > Create tasks.json file`.
+   - Si ya tienes un archivo `tasks.json`, ábrelo para editarlo.
+
+2. **Define una tarea para sincronizar cambios con Git:**
+   - Agrega el siguiente contenido al archivo `tasks.json`:
+     ```json
+     {
+       "version": "2.0.0",
+       "tasks": [
+         {
+           "label": "Sync with GitHub",
+           "type": "shell",
+           "command": "git add . && git commit -m 'Auto save changes' && git push",
+           "problemMatcher": [],
+           "group": {
+             "kind": "build",
+             "isDefault": true
+           }
+         }
+       ]
+     }
+     ```
+
+   - **Descripción de los campos:**
+     - `"label"`: El nombre de la tarea.
+     - `"command"`: Los comandos Git que se ejecutarán.
+     - `"isDefault"`: Define esta tarea como predeterminada para el grupo de tareas.
+
+3. **Guarda el archivo.**
+
+---
+
+### **2. Asignar un atajo de teclado**
+1. **Abre el archivo de configuración de atajos:**
+   - Ve a `File > Preferences > Keyboard Shortcuts` (o usa `Ctrl+K Ctrl+S` en Windows/Linux, o `Cmd+K Cmd+S` en macOS).
+   - Haz clic en el icono de ajustes (esquina superior derecha) y selecciona **"Open Keyboard Shortcuts (JSON)"**.
+
+2. **Añade una entrada para la tarea personalizada:**
+   - Agrega el siguiente fragmento al archivo de atajos:
+     ```json
+     {
+       "key": "ctrl+alt+s", // Cambia esta combinación según prefieras
+       "command": "workbench.action.tasks.runTask",
+       "args": "Sync with GitHub"
+     }
+     ```
+
+   - **Nota:** Cambia `"ctrl+alt+s"` por la combinación de teclas que desees (asegúrate de no usar una ya asignada).
+
+3. **Guarda el archivo.**
+
+---
+
+### **3. Ejecutar la sincronización con la combinación de teclas**
+- Una vez configurado, presiona la combinación de teclas (por ejemplo, `Ctrl+Alt+S`) para ejecutar la tarea de sincronización con Git.
+
+---

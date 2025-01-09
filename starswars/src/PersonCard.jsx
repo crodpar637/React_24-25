@@ -6,9 +6,9 @@ import Typography from "@mui/material/Typography";
 function PersonCard({ person }) {
   return (
     <>
-      <Card sx={{ maxWidth: 150 }}>
+      <Card sx={{ maxWidth: 200 }}>
         <CardMedia
-          sx={{ height: 150 }}
+          sx={{ height: 200 }}
           image={"https://starwars-visualguide.com/assets/img/characters/" + person.url.split("/")[5] + ".jpg"}
           title={person.name}
         />

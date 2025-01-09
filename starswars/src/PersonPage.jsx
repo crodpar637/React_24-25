@@ -2,11 +2,12 @@ import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import PersonCard from "./PersonCard";
+import Grid from "@mui/material/Grid2";
 
 function PersonPage() {
   const [pagina, setPagina] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [datosPersonajes, setDatosPersonajes] = useState({results : [] });
+  const [datosPersonajes, setDatosPersonajes] = useState({ results: [] });
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -61,19 +62,20 @@ function PersonPage() {
     );
   }
 
-
-    return (
-      <>
-        <Typography gutterBottom variant="h4">
-          Personajes de Star Wars
-        </Typography>
-        {console.log(datosPersonajes)}
+  return (
+    <>
+      <Typography gutterBottom variant="h4">
+        Personajes de Star Wars
+      </Typography>
+      <Grid container>
         {datosPersonajes.results.map((person) => (
-          <PersonCard key={person.name} person={person} />
+          <Grid key={person.name} size={{ xs: 6, md: 4 , lg : 2}}>
+            <PersonCard  person={person} />
+          </Grid>
         ))}
-      </>
-    );
-  
+      </Grid>
+    </>
+  );
 }
 
 export default PersonPage;

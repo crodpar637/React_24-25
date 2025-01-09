@@ -58,6 +58,28 @@ body {
 
 --------------------------------------------------------------------
 
+// Instalar React Router 
+npm i react-router
+
+// Renderizar <BrowserRouter> en la aplicación
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router";
+import App from "./app";
+
+const root = document.getElementById("root");
+
+ReactDOM.createRoot(root).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+
+
+
+
+
 // Instalar las siguientes extensiones en VSCode:
 ESLint: un linter, que es una herramienta que detecta errores en el código.
 Babel Javascript: resalta la sintaxis de React.js
@@ -67,4 +89,5 @@ html to JSX: convierte HTML en JSX
 XML Tools (opcional)
 vscode-icons (opcional)
 Prettier, un formateador de código (opcional)
+npm intelisense
 

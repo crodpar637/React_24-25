@@ -1,0 +1,23 @@
+GET http://localhost:3000/api/componentes
+
+###
+
+GET http://localhost:3000/api/componentes?listado=true
+
+
+###
+
+GET http://localhost:3000/api/componentes?grafica=true
+
+### 
+
+GET http://localhost:3000/api/componentes/2?relations=true
+
+### 
+
+GET http://localhost:3000/api/componentes/2
+
+
+###
+
+GET http://localhost:3000/api/tipos

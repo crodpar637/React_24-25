@@ -63,17 +63,27 @@ npm i react-router
 
 // Renderizar <BrowserRouter> en la aplicación
 
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router";
-import App from "./app";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router";
+import { createRoot } from "react-dom/client";
 
-const root = document.getElementById("root");
+let router = createBrowserRouter([
+  {
+    path: "/",
+    Component: Root,
+    children: [
+      {
+        path: "shows/:showId",
+        element: <Show />
+      },
+    ],
+  },
+]);
 
-ReactDOM.createRoot(root).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
 );
 
 

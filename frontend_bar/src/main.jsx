@@ -10,17 +10,18 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "./pages/Home";
+import ListadoPlatos from "./components/ListadoPlatos";
 
 let router = createBrowserRouter([
   {
     path: "/",
-    element : <Home />
-    // children: [   // Los hijos se renderizan en el elemento <Outlet /> del padre
-    //   {
-    //     path: "platos",
-    //     element: <Platos />,
-    //   },
-    // ],
+    element : <Home />,
+    children: [   // Los hijos se renderizan en el elemento <Outlet /> del padre
+      {
+        path: "listadoplatos",
+        element: <ListadoPlatos />,
+      },
+    ],
   },
 ]);
 

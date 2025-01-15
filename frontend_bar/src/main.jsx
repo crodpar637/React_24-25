@@ -9,17 +9,18 @@ import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router";
+import Home from "./pages/Home";
 
 let router = createBrowserRouter([
   {
     path: "/",
-    Component: Root,
-    children: [
-      {
-        path: "shows/:showId",
-        element: <Show />,
-      },
-    ],
+    element : <Home />
+    // children: [   // Los hijos se renderizan en el elemento <Outlet /> del padre
+    //   {
+    //     path: "platos",
+    //     element: <Platos />,
+    //   },
+    // ],
   },
 ]);
 

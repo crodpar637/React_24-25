@@ -44,7 +44,11 @@ function Menu() {
                   Tapas
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem link>Alta de platos</MDBDropdownItem>
+                  <MDBDropdownItem link>
+                    <Link to="/altaplato" style={{ color: "#4f4f4f" }}>
+                      Alta de platos
+                    </Link>
+                  </MDBDropdownItem>
                   <MDBDropdownItem link>
                     <Link to="/listadoplatos" style={{ color: "#4f4f4f" }}>
                       Listado de platos

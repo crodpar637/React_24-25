@@ -9,12 +9,12 @@ import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import {Box} from "@mui/material";
 
-function ListadoPlatos() {
+function ListadoPedidos() {
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    async function getPlatos() {
-      let response = await fetch("http://localhost:3000/api/platos");
+    async function getPedidos() {
+      let response = await fetch("http://localhost:3000/api/pedidos");
 
       if (response.ok) {
         let data = await response.json();
@@ -22,13 +22,13 @@ function ListadoPlatos() {
       }
     }
 
-    getPlatos();
+    getPedidos();
   }, []); // Se ejecuta solo en el primer renderizado
 
   return (
     <>
       <Typography variant="h4" align="center" sx={{ mt: 2 }}>
-        Listado de platos
+        Listado de pedidos
       </Typography>
 
       <Box sx={{ mx: 4 }}>
@@ -36,10 +36,12 @@ function ListadoPlatos() {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align="right">IDPLATO</TableCell>
-                <TableCell>NOMBRE</TableCell>
-                <TableCell>DESCRIPCIÓN</TableCell>
+                <TableCell align="right">IDPEDIDO</TableCell>
+                <TableCell>CLIENTE</TableCell>
+                <TableCell>PLATO</TableCell>
+                <TableCell align="right">UNIDADES</TableCell>
                 <TableCell align="right">PRECIO</TableCell>
+                <TableCell align="right">TOTAL</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -48,10 +50,12 @@ function ListadoPlatos() {
                   key={row.idplato}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell align="right">{row.idplato}</TableCell>
-                  <TableCell>{row.nombre}</TableCell>
-                  <TableCell>{row.descripcion}</TableCell>
-                  <TableCell align="right">{row.precio + " €"}</TableCell>
+                  <TableCell align="right">{row.idpedido}</TableCell>
+                  <TableCell>{row.cliente}</TableCell>
+                  <TableCell>{row.idplato_plato.nombre}</TableCell>
+                  <TableCell align="right">{row.unidades}</TableCell>
+                  <TableCell align="right">{row.idplato_plato.precio + " €"}</TableCell>
+                  <TableCell align="right">{(row.idplato_plato.precio * row.unidades).toFixed(2) + " €"}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -62,4 +66,4 @@ function ListadoPlatos() {
   );
 }
 
-export default ListadoPlatos;
+export default ListadoPedidos;

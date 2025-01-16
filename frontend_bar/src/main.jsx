@@ -11,6 +11,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "./pages/Home";
 import ListadoPlatos from "./components/ListadoPlatos";
+import ListadoPedidos from "./components/ListadoPedidos";
 
 let router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ let router = createBrowserRouter([
       {
         path: "listadoplatos",
         element: <ListadoPlatos />,
+      },
+      {
+        path: "listadopedidos",
+        element: <ListadoPedidos />,
       },
     ],
   },

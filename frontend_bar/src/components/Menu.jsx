@@ -46,7 +46,9 @@ function Menu() {
                 <MDBDropdownMenu>
                   <MDBDropdownItem link>Alta de platos</MDBDropdownItem>
                   <MDBDropdownItem link>
-                    <Link to="/listadoplatos" style={{color: '#4f4f4f'}}>Listado de platos</Link>
+                    <Link to="/listadoplatos" style={{ color: "#4f4f4f" }}>
+                      Listado de platos
+                    </Link>
                   </MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
@@ -58,7 +60,11 @@ function Menu() {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <MDBDropdownItem link>Alta de pedidos</MDBDropdownItem>
-                  <MDBDropdownItem link>Listado de pedidos</MDBDropdownItem>
+                  <MDBDropdownItem link>
+                    <Link to="/listadopedidos" style={{ color: "#4f4f4f" }}>
+                      Listado de pedidos
+                    </Link>
+                  </MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavbarItem>

@@ -44,16 +44,12 @@ function Menu() {
                   Tapas
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem link>
-                    <Link to="/altaplato" style={{ color: "#4f4f4f" }}>
-                      Alta de platos
-                    </Link>
-                  </MDBDropdownItem>
-                  <MDBDropdownItem link>
-                    <Link to="/listadoplatos" style={{ color: "#4f4f4f" }}>
-                      Listado de platos
-                    </Link>
-                  </MDBDropdownItem>
+                  <Link to="/altaplato" style={{ color: "#4f4f4f" }}>
+                    <MDBDropdownItem link>Alta de platos</MDBDropdownItem>
+                  </Link>
+                  <Link to="/listadoplatos" style={{ color: "#4f4f4f" }}>
+                    <MDBDropdownItem link>Listado de platos</MDBDropdownItem>
+                  </Link>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavbarItem>
@@ -64,11 +60,9 @@ function Menu() {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <MDBDropdownItem link>Alta de pedidos</MDBDropdownItem>
-                  <MDBDropdownItem link>
-                    <Link to="/listadopedidos" style={{ color: "#4f4f4f" }}>
-                      Listado de pedidos
-                    </Link>
-                  </MDBDropdownItem>
+                  <Link to="/listadopedidos" style={{ color: "#4f4f4f" }}>
+                    <MDBDropdownItem link>Listado de pedidos</MDBDropdownItem>
+                  </Link>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavbarItem>

@@ -1,10 +1,12 @@
 import { Typography, TextField, Stack, Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 function ModificarPlato() {
+  const params = useParams();
   const [datos, setDatos] = useState({
+    idplato: params.idplato,
     nombre: "",
     descripcion: "",
     precio: "",
@@ -13,47 +15,50 @@ function ModificarPlato() {
 
   useEffect(() => {
     async function getPlatoById() {
-      let response = await fetch("http://localhost:3000/api/platos");
-
+      let response = await fetch(
+        "http://localhost:3000/api/platos/" + datos.idplato
+      );
       if (response.ok) {
         let data = await response.json();
-        setRows(data.datos);
+        setDatos(data.datos);
+      } else if (response.status === 404) {
+        let data = await response.json();
+        alert(data.mensaje);
+        navigate("/"); // Volver a la página principal por ruta erronea
       }
     }
 
-    getPlatos();
+    getPlatoById();
   }, []); // Se ejecuta solo en el primer renderizado
-
-
 
   const handleSubmit = async (e) => {
     // No hacemos submit
     e.preventDefault();
 
     // Enviamos los datos mediante fetch
-    try{
-        const response = await fetch("http://localhost:3000/api/platos", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(datos),
-          });
+    try {
+      const response = await fetch("http://localhost:3000/api/platos", {
+        method: "UPDATE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(datos),
+      });
 
-        if (response.ok) {
-            const respuesta = await response.json();
-            alert(respuesta.mensaje);
-            if(respuesta.ok){
-                navigate("/"); // Volver a la página principal
-            }  
-        } 
+      if (response.ok) {
+        const respuesta = await response.json();
+        alert(respuesta.mensaje);
+        if (respuesta.ok) {
+          navigate("/"); // Volver a la página principal
+        }
+      }
     } catch (error) {
-        console.error("Error:", error);
-        alert("Error:", error);
+      console.error("Error:", error);
+      alert("Error:", error);
     }
   };
 
-  const handleChange = (e) => { 
+  const handleChange = (e) => {
     setDatos({
       ...datos,
       [e.target.name]: e.target.value,

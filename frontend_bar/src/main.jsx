@@ -12,12 +12,15 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "./pages/Home";
 import ListadoPlatos from "./components/ListadoPlatos";
 import ListadoPedidos from "./components/ListadoPedidos";
+import ModificarPlato from "./components/ModificarPlato";
 import AltaPlato from "./components/AltaPlato";
+import PaginaError from "./pages/PaginaError";
 
 let router = createBrowserRouter([
   {
     path: "/",
     element : <Home />,
+    errorElement : <PaginaError />,
     children: [   // Los hijos se renderizan en el elemento <Outlet /> del padre
       {
         path: "listadoplatos",
@@ -30,6 +33,10 @@ let router = createBrowserRouter([
       {
         path: "altaplato",
         element: <AltaPlato />,
+      },
+      {
+        path: "modificarplato/:idplato",
+        element: <ModificarPlato />,
       },
     ],
   },

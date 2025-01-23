@@ -7,10 +7,15 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import Button from "@mui/material/Button";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import { useNavigate } from "react-router";
 
 function ListadoPlatos() {
   const [rows, setRows] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getPlatos() {
@@ -24,6 +29,21 @@ function ListadoPlatos() {
 
     getPlatos();
   }, []); // Se ejecuta solo en el primer renderizado
+
+  const handleDelete = async (idplato) => {
+    let response = await fetch("http://localhost:3000/api/platos/" + idplato, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      // Utilizando filter creo un array sin el plato borrado
+      const platosTrasBorrado = rows.filter(
+        (plato) => plato.idplato != idplato
+      );
+      // Establece los datos de nuevo para provocar un renderizado
+      setRows(platosTrasBorrado);
+    }
+  };
 
   return (
     <>
@@ -40,6 +60,8 @@ function ListadoPlatos() {
                 <TableCell>NOMBRE</TableCell>
                 <TableCell>DESCRIPCIÓN</TableCell>
                 <TableCell align="right">PRECIO</TableCell>
+                <TableCell align="center">ELIMINAR</TableCell>
+                <TableCell align="center">EDITAR</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -52,6 +74,23 @@ function ListadoPlatos() {
                   <TableCell>{row.nombre}</TableCell>
                   <TableCell>{row.descripcion}</TableCell>
                   <TableCell align="right">{row.precio + " €"}</TableCell>
+                  <TableCell>
+                    <Button
+                      variant="contained"
+                      onClick={() => handleDelete(row.idplato)}
+                      color="error"
+                    >
+                      <DeleteForeverIcon fontSize="small" />
+                    </Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      variant="contained"
+                      onClick={() => navigate("/modificarplato/" + row.idplato)}
+                    >
+                      <EditNoteIcon fontSize="small" />
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

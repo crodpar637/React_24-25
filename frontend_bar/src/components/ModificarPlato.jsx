@@ -2,7 +2,7 @@ import { Typography, TextField, Stack, Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import { apiUrl } from '../config';
+import { apiUrl } from "../config";
 
 function ModificarPlato() {
   const params = useParams();
@@ -12,15 +12,17 @@ function ModificarPlato() {
     descripcion: "",
     precio: "",
   });
+  const [validacion, setValidacion] = useState({
+    nombre: false, // true si hay error
+    descripcion: false,
+    precio: false,
+  });
 
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     async function getPlatoById() {
-      let response = await fetch(
-        apiUrl + "/platos/" + datos.idplato
-      );
+      let response = await fetch(apiUrl + "/platos/" + datos.idplato);
       if (response.ok) {
         let data = await response.json();
         setDatos(data.datos);
@@ -37,35 +39,74 @@ function ModificarPlato() {
   const handleSubmit = async (e) => {
     // No hacemos submit
     e.preventDefault();
-   
-    // Enviamos los datos mediante fetch
-    try {
-      
-      const response = await fetch(
-        apiUrl + "/platos/" + datos.idplato,
-        {
+    console.log("Vamos a validar");
+    if (validarDatos()) {
+      // Enviamos los datos mediante fetch
+      try {
+        console.log("Vamos a hacer fetch");
+        const response = await fetch(apiUrl + "/platos/" + datos.idplato, {
           method: "PUT", // "PATCH"
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(datos), // JSON.stringify({blocked: true})
-        }
-      );
+        });
 
-      if (response.ok) {
-        // 204 No content
-        alert("Actualización correcta");
-        navigate(-1); // Volver a la ruta anterior
-      } else { // 404 Not Found plato no modificado o no encontrado
-        const data = await response.json();
-        alert(data.mensaje);
+        if (response.ok) {
+          // 204 No content
+          alert("Actualización correcta");
+          navigate(-1); // Volver a la ruta anterior
+        } else {
+          // 404 Not Found plato no modificado o no encontrado
+          const data = await response.json();
+          alert(data.mensaje);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Error:", error);
       }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Error:", error);
     }
   };
 
+  function validarDatos() {
+    // En principio, damos por bueno el formulario
+    let validado = true;
+    // Estado de la validación auxiliar
+    let validacionAux = {
+      nombre: false,
+      descripcion: false,
+      precio: false,
+    };
+
+    if (datos.nombre.length < 3) {
+      // Error en el nombre
+      validacionAux.nombre = true;
+      // Formulario invalido
+      validado = false;
+    }
+
+    if (datos.descripcion.length < 10) {
+      validacionAux.descripcion = true;
+      validado = false;
+    }
+
+    let expPrecio = /^\d{1,2}(\.\d{1,2})?$/;
+    if (expPrecio.test(datos.precio)) {
+      // Los datos al menos tienen el formato correcto
+      if (parseFloat(datos.precio) < 0.5 || parseFloat(datos.precio) > 50) {
+        validacionAux.precio = true;
+        validado = false;
+      }
+    } else {
+      validacionAux.precio = true;
+      validado = false;
+    }
+
+    // Actualizo el estado de la validacion de los Textfields
+    setValidacion(validacionAux);
+    console.log("Formulario valido:", validado);
+    return validado;
+  }
   const handleChange = (e) => {
     setDatos({
       ...datos,
@@ -97,6 +138,10 @@ function ModificarPlato() {
               name="nombre"
               value={datos.nombre}
               onChange={handleChange}
+              error={validacion.nombre}
+              helperText={
+                validacion.nombre && "Nombre incorrecto. Mínimo 3 caracteres"
+              }
             />
             <TextField
               id="outlined-basic"
@@ -105,6 +150,11 @@ function ModificarPlato() {
               name="descripcion"
               value={datos.descripcion}
               onChange={handleChange}
+              error={validacion.descripcion}
+              helperText={
+                validacion.descripcion &&
+                "Descripción requerida. Minimo 10 caracteres"
+              }
             />
             <TextField
               id="outlined-basic"
@@ -113,6 +163,10 @@ function ModificarPlato() {
               name="precio"
               value={datos.precio}
               onChange={handleChange}
+              error={validacion.precio}
+              helperText={
+                validacion.precio && "Importe incorrecto. [0.50€-50.00€]"
+              }
             />
             <Button variant="contained" type="submit">
               Aceptar

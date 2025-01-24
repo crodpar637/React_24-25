@@ -32,7 +32,7 @@ function ListadoPlatos() {
   }, []); // Se ejecuta solo en el primer renderizado
 
   const handleDelete = async (idplato) => {
-    let response = await fetch(apiUrl + "/platos" + idplato, {
+    let response = await fetch(apiUrl + "/platos/" + idplato, {
       method: "DELETE",
     });
 

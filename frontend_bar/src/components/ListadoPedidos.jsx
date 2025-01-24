@@ -8,13 +8,14 @@ import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import {Box} from "@mui/material";
+import { apiUrl } from '../config';
 
 function ListadoPedidos() {
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
     async function getPedidos() {
-      let response = await fetch("http://localhost:3000/api/pedidos");
+      let response = await fetch(apiUrl + "/pedidos");
 
       if (response.ok) {
         let data = await response.json();

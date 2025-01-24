@@ -2,6 +2,7 @@ import { Typography, TextField, Stack, Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
+import { apiUrl } from '../config';
 
 function ModificarPlato() {
   const params = useParams();
@@ -13,11 +14,12 @@ function ModificarPlato() {
   });
 
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     async function getPlatoById() {
       let response = await fetch(
-        "http://localhost:3000/api/platos/" + datos.idplato
+        apiUrl + "/platos/" + datos.idplato
       );
       if (response.ok) {
         let data = await response.json();
@@ -40,7 +42,7 @@ function ModificarPlato() {
     try {
       
       const response = await fetch(
-        "http://localhost:3000/api/platos/" + datos.idplato,
+        apiUrl + "/platos/" + datos.idplato,
         {
           method: "PUT", // "PATCH"
           headers: {

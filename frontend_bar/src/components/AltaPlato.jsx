@@ -2,6 +2,9 @@ import { Typography, TextField, Stack, Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+// Importamos las variables de entorno
+import { apiUrl } from '../config';
+
 
 function AltaPlato() {
   const [datos, setDatos] = useState({
@@ -17,7 +20,7 @@ function AltaPlato() {
 
     // Enviamos los datos mediante fetch
     try{
-        const response = await fetch("http://localhost:3000/api/platos", {
+        const response = await fetch(apiUrl + "/platos", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

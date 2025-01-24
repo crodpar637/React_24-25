@@ -12,6 +12,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Button from "@mui/material/Button";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import { useNavigate } from "react-router";
+import { apiUrl } from "../config";
 
 function ListadoPlatos() {
   const [rows, setRows] = useState([]);
@@ -19,7 +20,7 @@ function ListadoPlatos() {
 
   useEffect(() => {
     async function getPlatos() {
-      let response = await fetch("http://localhost:3000/api/platos");
+      let response = await fetch(apiUrl + "/platos");
 
       if (response.ok) {
         let data = await response.json();
@@ -31,7 +32,7 @@ function ListadoPlatos() {
   }, []); // Se ejecuta solo en el primer renderizado
 
   const handleDelete = async (idplato) => {
-    let response = await fetch("http://localhost:3000/api/platos/" + idplato, {
+    let response = await fetch(apiUrl + "/platos" + idplato, {
       method: "DELETE",
     });
 

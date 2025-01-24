@@ -11,6 +11,7 @@ function ModificarPlato() {
     descripcion: "",
     precio: "",
   });
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,23 +35,28 @@ function ModificarPlato() {
   const handleSubmit = async (e) => {
     // No hacemos submit
     e.preventDefault();
-
+   
     // Enviamos los datos mediante fetch
     try {
-      const response = await fetch("http://localhost:3000/api/platos", {
-        method: "UPDATE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(datos),
-      });
+      
+      const response = await fetch(
+        "http://localhost:3000/api/platos/" + datos.idplato,
+        {
+          method: "PUT", // "PATCH"
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(datos), // JSON.stringify({blocked: true})
+        }
+      );
 
       if (response.ok) {
-        const respuesta = await response.json();
-        alert(respuesta.mensaje);
-        if (respuesta.ok) {
-          navigate("/"); // Volver a la página principal
-        }
+        // 204 No content
+        alert("Actualización correcta");
+        navigate(-1); // Volver a la ruta anterior
+      } else { // 404 Not Found plato no modificado o no encontrado
+        const data = await response.json();
+        alert(data.mensaje);
       }
     } catch (error) {
       console.error("Error:", error);

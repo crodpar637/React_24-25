@@ -15,6 +15,9 @@ import ListadoPedidos from "./components/ListadoPedidos";
 import ModificarPlato from "./components/ModificarPlato";
 import AltaPlato from "./components/AltaPlato";
 import PaginaError from "./pages/PaginaError";
+import SignUp from "./components/Signup";
+import Login from "./components/Login";
+import PedidoMultiple from "./components/PedidoMultiple";
 
 let router = createBrowserRouter([
   {
@@ -37,6 +40,18 @@ let router = createBrowserRouter([
       {
         path: "modificarplato/:idplato",
         element: <ModificarPlato />,
+      },
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "pedidomultiple",
+        element: <PedidoMultiple />,
       },
     ],
   },

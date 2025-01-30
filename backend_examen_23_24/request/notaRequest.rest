@@ -1,0 +1,43 @@
+
+### Recuperar todas las notas
+GET http://localhost:3000/api/notas/
+
+### Recuperar la nota con id=1
+
+GET http://localhost:3000/api/notas/1
+
+### Recuperar la nota con id=999   --> Not found (404)
+
+GET http://localhost:3000/api/notas/999
+
+
+### Insertar una nota 
+POST http://localhost:3000/api/notas/
+content-type: application/json
+
+{
+    "titulo": "Estudiar",
+    "texto": "Debo recordar estudiar para los exámenes.",
+    "fcreacion": "2024-02-19T23:59:25.000Z",
+    "urlimagen": "https://pm1.aminoapps.com/6237/ce61ee92e903ccde1970614edff5909075c0fd54_hq.jpg"
+}
+
+### Actualizar una nota 
+PUT http://localhost:3000/api/notas/2
+content-type: application/json
+
+{
+    "titulo": "Estudiar",
+    "texto": "Estudiar o comprarme un taxi.",
+    "fcreacion": "2024-02-19T23:59:25.000Z",
+    "urlimagen": "https://pm1.aminoapps.com/6237/ce61ee92e903ccde1970614edff5909075c0fd54_hq.jpg"
+}
+
+### Borrar una nota
+
+DELETE http://localhost:3000/api/notas/3
+
+
+### Borrar una nota no existente --> Not found (404)
+
+DELETE http://localhost:3000/api/notas/999

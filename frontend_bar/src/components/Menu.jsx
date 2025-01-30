@@ -11,6 +11,8 @@ import {
   MDBDropdownMenu,
   MDBDropdownItem,
   MDBCollapse,
+  MDBBtn,
+  MDBInputGroup,
 } from "mdb-react-ui-kit";
 import { useState } from "react";
 import logo from "../assets/images/logo.png";
@@ -63,9 +65,25 @@ function Menu() {
                   <Link to="/listadopedidos" style={{ color: "#4f4f4f" }}>
                     <MDBDropdownItem link>Listado de pedidos</MDBDropdownItem>
                   </Link>
+                  <Link to="/pedidomultiple" style={{ color: "#4f4f4f" }}>
+                    <MDBDropdownItem link>Pedido múltiple</MDBDropdownItem>
+                  </Link>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavbarItem>
+          
+            <MDBInputGroup tag="form" className="d-flex w-auto mt-1">
+              <Link to="/signup">
+                <MDBBtn size="sm" className="me-2">
+                  SignUp
+                </MDBBtn>
+              </Link>
+              <Link to="/login">
+                <MDBBtn size="sm" className="me-2">
+                  Login
+                </MDBBtn>
+              </Link>
+            </MDBInputGroup>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>

@@ -15,7 +15,7 @@ function ListadoPedidos() {
 
   useEffect(() => {
     async function getPedidos() {
-      let response = await fetch(apiUrl + "/pedidos");
+      let response = await fetch(apiUrl + "/pedidos", {method: "GET" ,  credentials: "include"}); // include para enviar las cookies
 
       if (response.ok) {
         let data = await response.json();

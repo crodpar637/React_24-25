@@ -19,7 +19,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 function PedidoMultiple() {
   const [platos, setPlatos] = useState([]);
   const [platosSeleccionados, setPlatosSeleccionados] = useState([]);
-  const [platoSel, setPlatoSel] = useState(-1);
+  const [platoSel, setPlatoSel] = useState('');
 
   const handleChange = (event) => {
     setPlatoSel(event.target.value);

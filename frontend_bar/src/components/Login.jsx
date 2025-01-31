@@ -40,8 +40,8 @@ function Login() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          credentials: "include",
         },
+        credentials: "include", // Para aceptar cookies en la respuesta y enviarlas si las hay
         body: JSON.stringify(formData),
       });
 

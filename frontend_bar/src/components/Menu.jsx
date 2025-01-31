@@ -12,7 +12,6 @@ import {
   MDBDropdownItem,
   MDBCollapse,
   MDBBtn,
-  MDBInputGroup,
 } from "mdb-react-ui-kit";
 import { useState } from "react";
 import logo from "../assets/images/logo.png";
@@ -38,57 +37,59 @@ function Menu() {
           <MDBIcon icon="bars" fas />
         </MDBNavbarToggler>
 
-        <MDBCollapse navbar open={openBasic}>
-          <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
-            <MDBNavbarItem>
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="nav-link" role="button">
-                  Tapas
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <Link to="/altaplato" style={{ color: "#4f4f4f" }}>
-                    <MDBDropdownItem link>Alta de platos</MDBDropdownItem>
-                  </Link>
-                  <Link to="/listadoplatos" style={{ color: "#4f4f4f" }}>
-                    <MDBDropdownItem link>Listado de platos</MDBDropdownItem>
-                  </Link>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="nav-link" role="button">
-                  Pedidos
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <MDBDropdownItem link>Alta de pedidos</MDBDropdownItem>
-                  <Link to="/listadopedidos" style={{ color: "#4f4f4f" }}>
-                    <MDBDropdownItem link>Listado de pedidos</MDBDropdownItem>
-                  </Link>
-                  <Link to="/pedidomultiple" style={{ color: "#4f4f4f" }}>
-                    <MDBDropdownItem link>Pedido múltiple</MDBDropdownItem>
-                  </Link>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavbarItem>
-          
-            <MDBInputGroup tag="form" className="d-flex w-auto mt-1">
+        <MDBCollapse navbar open={openBasic} className="w-100">
+          {/* Contenedor principal para el menú y los botones */}
+          <MDBNavbarNav className="w-100 d-flex justify-content-between align-items-center">
+            {/* Menú de la izquierda */}
+            <div className="d-flex">
+              <MDBNavbarItem>
+                <MDBDropdown>
+                  <MDBDropdownToggle tag="a" className="nav-link" role="button">
+                    Tapas
+                  </MDBDropdownToggle>
+                  <MDBDropdownMenu>
+                    <Link to="/altaplato" style={{ color: "#4f4f4f" }}>
+                      <MDBDropdownItem link>Alta de platos</MDBDropdownItem>
+                    </Link>
+                    <Link to="/listadoplatos" style={{ color: "#4f4f4f" }}>
+                      <MDBDropdownItem link>Listado de platos</MDBDropdownItem>
+                    </Link>
+                  </MDBDropdownMenu>
+                </MDBDropdown>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBDropdown>
+                  <MDBDropdownToggle tag="a" className="nav-link" role="button">
+                    Pedidos
+                  </MDBDropdownToggle>
+                  <MDBDropdownMenu>
+                    <MDBDropdownItem link>Alta de pedidos</MDBDropdownItem>
+                    <Link to="/listadopedidos" style={{ color: "#4f4f4f" }}>
+                      <MDBDropdownItem link>Listado de pedidos</MDBDropdownItem>
+                    </Link>
+                    <Link to="/pedidomultiple" style={{ color: "#4f4f4f" }}>
+                      <MDBDropdownItem link>Pedido múltiple</MDBDropdownItem>
+                    </Link>
+                  </MDBDropdownMenu>
+                </MDBDropdown>
+              </MDBNavbarItem>
+            </div>
+
+            {/* Botones alineados a la derecha */}
+            <div className="d-flex justify-content-end">
               <Link to="/signup">
                 <MDBBtn size="sm" className="me-2">
                   SignUp
                 </MDBBtn>
               </Link>
               <Link to="/login">
-                <MDBBtn size="sm" className="me-2">
-                  Login
-                </MDBBtn>
+                <MDBBtn size="sm">Login</MDBBtn>
               </Link>
-            </MDBInputGroup>
+            </div>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>
     </MDBNavbar>
   );
 }
-
 export default Menu;

@@ -48,7 +48,7 @@ function ListadoPedidos() {
             <TableBody>
               {rows.map((row) => (
                 <TableRow
-                  key={row.idplato}
+                  key={row.idpedido}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align="right">{row.idpedido}</TableCell>

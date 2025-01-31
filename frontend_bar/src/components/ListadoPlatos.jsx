@@ -20,7 +20,13 @@ function ListadoPlatos() {
 
   useEffect(() => {
     async function getPlatos() {
-      let response = await fetch(apiUrl + "/platos");
+      let response = await fetch(apiUrl + "/platos", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // Para aceptar cookies en la respuesta y enviarlas si las hay
+      });
 
       if (response.ok) {
         let data = await response.json();

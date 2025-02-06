@@ -88,17 +88,34 @@ createRoot(document.getElementById("root")).render(
   </StrictMode>
 );
 
+--------------------------------------------------------------
+Zustand - Gestión del estado de la aplicación
+Zustand es una biblioteca de gestión de estado para aplicaciones en React. Se destaca por ser más simple y ligera en comparación con Redux, evitando la complejidad del boilerplate y ofreciendo una API más intuitiva basada en hooks.
+📌 Principales características de Zustand
 
+✅ Ligero y sin boilerplate: No necesitas configurar reducers ni actions.
+✅ Rápido y eficiente: Usa un sistema de suscripción optimizado para evitar renders innecesarios.
+✅ Basado en hooks: Usa useStore para acceder al estado de forma sencilla.
+✅ Persistencia y middlewares: Soporta persistencia en localStorage y middlewares como logs o sincronización con el backend.
+✅ Sin Provider: No requiere un Provider en el árbol de componentes como Redux.
+🚀 Ejemplo básico con Zustand
+
+📌 1️⃣ Instalación
+
+npm install zustand
+
+-----------------------------------------------
 
 
 // Instalar las siguientes extensiones en VSCode:
 ESLint: un linter, que es una herramienta que detecta errores en el código.
 Babel Javascript: resalta la sintaxis de React.js
 Error Lens: detecta y muestra errores de JS
-Live Server: servidor local de pruebas (imprescindible)
+Live Server: servidor local de pruebas (no necesario en desarrollo con React)
 html to JSX: convierte HTML en JSX
 XML Tools (opcional)
 vscode-icons (opcional)
-Prettier, un formateador de código (opcional)
-npm intelisense
+Prettier, un formateador de código (opcional, útil en React)
+IntelliSense for CSS class names in HTML
+npm Intelisense (autocompleta importaciones)
 

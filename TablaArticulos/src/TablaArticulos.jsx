@@ -1,8 +1,8 @@
-import articulos from "./articulos.js";
-import TablaDatos from "./TablaDatos";
-import CuadroBusqueda from "./CuadroBusqueda.jsx";
 import { useState } from "react";
+import articulos from "./articulos.js";
 import Checkbox from "./Checkbox";
+import CuadroBusqueda from "./CuadroBusqueda.jsx";
+import TablaDatos from "./TablaDatos";
 
 function TablaArticulos() {
   const [textoFiltro, setTextoFiltro] = useState("");

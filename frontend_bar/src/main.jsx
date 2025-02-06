@@ -38,7 +38,7 @@ let router = createBrowserRouter([
         element: <AltaPlato />,
       },
       {
-        path: "modificarplato/:idplato",
+        path: "modificarplato/:idplato", 
         element: <ModificarPlato />,
       },
       {

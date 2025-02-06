@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 /**
  * Zustand store for managing a counter with persistence and devtools support.
@@ -17,7 +17,6 @@ import { devtools, persist } from "zustand/middleware";
  * decrease(); // Decreases the count by 1
  */
 const useContadorV2Store = create(
-  devtools(
     persist(
       (set) => ({
         count: 0,
@@ -26,7 +25,6 @@ const useContadorV2Store = create(
       }),
       { name: "counter-local-storage" }
     )
-  )
 );
 
 // 🔄 Escuchar cambios en `localStorage` desde otra pestaña

@@ -12,8 +12,9 @@ import { create } from 'zustand';
  */
 const useContadorStore = create((set) => ({
   count: 0,
-  increase: () => set((state) => ({ count: state.count + 1 })),
-  decrease: () => set((state) => ({ count: state.count - 1 }))
+  usos: 0,
+  increase: () => set((state) => ({ count: state.count + 1, usos: state.usos +1 })),
+  decrease: () => set((state) => ({ count: state.count - 1 , usos: state.usos +1}))
 }));
 
 export default useContadorStore;

@@ -3,6 +3,7 @@ import { TextField, Button, Box, Typography, Alert } from "@mui/material";
 import { apiUrl } from "../config";
 import Grid from "@mui/material/Grid2";
 import { useNavigate } from "react-router";
+import useUserStore from "../stores/useUserStore";
 
 function Login() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Login() {
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const { setUser } = useUserStore();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,12 +51,13 @@ function Login() {
 
       if (response.ok) {
         alert(data.mensaje);
+        setUser(data.datos); // Se guarda en el userStore los datos del usuario logueado
         navigate("/"); // Redirige tras el login exitoso
       } else {
         setErrors({ apiError: data.mensaje || "Credenciales incorrectas." });
       }
     } catch (error) {
-      setErrors({ apiError: "Error de red. Inténtalo de nuevo más tarde." });
+      setErrors({ apiError: "Error de red. Inténtalo de nuevo más tarde." + error });
     }
   };
 

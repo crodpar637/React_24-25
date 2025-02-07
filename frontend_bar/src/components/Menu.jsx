@@ -1,24 +1,49 @@
 import {
+  MDBBtn,
+  MDBCollapse,
   MDBContainer,
+  MDBDropdown,
+  MDBDropdownItem,
+  MDBDropdownMenu,
+  MDBDropdownToggle,
+  MDBIcon,
   MDBNavbar,
   MDBNavbarBrand,
-  MDBNavbarToggler,
-  MDBIcon,
-  MDBNavbarNav,
   MDBNavbarItem,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-  MDBCollapse,
-  MDBBtn,
+  MDBNavbarNav,
+  MDBNavbarToggler,
 } from "mdb-react-ui-kit";
 import { useState } from "react";
-import logo from "../assets/images/logo.png";
 import { Link } from "react-router";
+import logo from "../assets/images/logo.png";
+import { apiUrl } from "../config";
+import useUserStore from "../stores/useUserStore";
+import { useNavigate } from "react-router";
 
 function Menu() {
   const [openBasic, setOpenBasic] = useState(false);
+  const { user, clearUser } = useUserStore();
+  const navigate = useNavigate();
+
+  const logout = async () => {
+    try {
+      const response = await fetch(apiUrl + "/users/logout", {
+        method: "POST",
+        credentials: "include", // Necesario para enviar cookies
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.mensaje);
+        // Limpiar el estado global de autenticación (si usas Zustand, Context, etc.)
+        clearUser();
+        // Redireccionar al usuario
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error en logout", error);
+    }
+  };
 
   return (
     <MDBNavbar expand="lg" light bgColor="light">
@@ -48,9 +73,11 @@ function Menu() {
                     Tapas
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
-                    <Link to="/altaplato" style={{ color: "#4f4f4f" }}>
-                      <MDBDropdownItem link>Alta de platos</MDBDropdownItem>
-                    </Link>
+                    {user !== null && (
+                      <Link to="/altaplato" style={{ color: "#4f4f4f" }}>
+                        <MDBDropdownItem link>Alta de platos</MDBDropdownItem>
+                      </Link>
+                    )}
                     <Link to="/listadoplatos" style={{ color: "#4f4f4f" }}>
                       <MDBDropdownItem link>Listado de platos</MDBDropdownItem>
                     </Link>
@@ -63,13 +90,19 @@ function Menu() {
                     Pedidos
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
-                    <MDBDropdownItem link>Alta de pedidos</MDBDropdownItem>
+                    {user !== null && (
+                      <MDBDropdownItem link>
+                        Alta de pedidos (no implementado)
+                      </MDBDropdownItem>
+                    )}
                     <Link to="/listadopedidos" style={{ color: "#4f4f4f" }}>
                       <MDBDropdownItem link>Listado de pedidos</MDBDropdownItem>
                     </Link>
-                    <Link to="/pedidomultiple" style={{ color: "#4f4f4f" }}>
-                      <MDBDropdownItem link>Pedido múltiple</MDBDropdownItem>
-                    </Link>
+                    {user != null && (
+                      <Link to="/pedidomultiple" style={{ color: "#4f4f4f" }}>
+                        <MDBDropdownItem link>Pedido múltiple</MDBDropdownItem>
+                      </Link>
+                    )}
                   </MDBDropdownMenu>
                 </MDBDropdown>
               </MDBNavbarItem>
@@ -77,14 +110,25 @@ function Menu() {
 
             {/* Botones alineados a la derecha */}
             <div className="d-flex justify-content-end">
-              <Link to="/signup">
-                <MDBBtn size="sm" className="me-2">
-                  SignUp
-                </MDBBtn>
-              </Link>
-              <Link to="/login">
-                <MDBBtn size="sm">Login</MDBBtn>
-              </Link>
+              {user === null ? (
+                <>
+                  <Link to="/signup">
+                    <MDBBtn size="sm" className="me-2">
+                      SignUp
+                    </MDBBtn>
+                  </Link>
+                  <Link to="/login">
+                    <MDBBtn size="sm">Login</MDBBtn>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <span className="mx-2">Hola, {user.username}</span>
+                  <MDBBtn size="sm" onClick={logout}>
+                    Logout
+                  </MDBBtn>
+                </>
+              )}
             </div>
           </MDBNavbarNav>
         </MDBCollapse>

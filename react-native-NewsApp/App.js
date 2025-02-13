@@ -2,8 +2,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet } from "react-native";
+import  News  from "./screens/News";
+import { Icon } from "react-native-elements";
 
-import News from "./screens/News";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,17 +14,20 @@ export default function App() {
       <Tab.Navigator>
         <Tab.Screen
           name="All"
-          component={ ( <All category="general" /> )}
+          component={News}
+          initialParams={{ category: "general" }} 
           options={{
             tabBarIcon: (props) => (
-              <Icon type="feather" name="home" color={props.color} />
+              <Icon type="feather" name="home"  />
             ),
           }}
         />
 
-        {/* <Tab.Screen
+        <Tab.Screen
           name="Business"
-          component={Business}
+          component={News}
+          initialParams={{ category: "business" }} 
+          
           options={{
             tabBarIcon: (props) => (
               <Icon type="feather" name="dollar-sign" color={props.color} />
@@ -33,7 +37,8 @@ export default function App() {
 
         <Tab.Screen
           name="Health"
-          component={HealthScreen}
+          component={News}
+          initialParams={{ category: "health" }}
           options={{
             tabBarIcon: (props) => (
               <Icon type="feather" name="heart" color={props.color} />
@@ -43,7 +48,8 @@ export default function App() {
 
         <Tab.Screen
           name="Sports"
-          component={SportsScreen}
+          component={News}
+          initialParams={{ category: "sports" }}
           options={{
             tabBarIcon: (props) => (
               <Icon
@@ -57,7 +63,8 @@ export default function App() {
 
         <Tab.Screen
           name="Tech"
-          component={TechScreen}
+          component={News}
+          initialParams={{ category: "tech" }}
           options={{
             tabBarIcon: (props) => (
               <Icon
@@ -67,7 +74,7 @@ export default function App() {
               />
             ),
           }}
-        /> */}
+        /> 
       </Tab.Navigator>
     </NavigationContainer>
   );

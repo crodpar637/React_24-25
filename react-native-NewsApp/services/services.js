@@ -8,7 +8,6 @@ export async function services(category = 'general') {
     });
 
     let result = await articles.json();
-    articles = null;
 
     return result.articles;
 }

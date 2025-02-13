@@ -73,7 +73,7 @@ function Menu() {
                     Tapas
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
-                    {user !== undefined  && (
+                    {user !== undefined && (
                       <Link to="/altaplato" style={{ color: "#4f4f4f" }}>
                         <MDBDropdownItem link>Alta de platos</MDBDropdownItem>
                       </Link>
@@ -98,10 +98,19 @@ function Menu() {
                     <Link to="/listadopedidos" style={{ color: "#4f4f4f" }}>
                       <MDBDropdownItem link>Listado de pedidos</MDBDropdownItem>
                     </Link>
-                    {user !== undefined  ? (
-                      <Link to="/pedidomultiple" style={{ color: "#4f4f4f" }}>
-                        <MDBDropdownItem link>Pedido múltiple</MDBDropdownItem>
-                      </Link>
+                    {user !== undefined ? (
+                      <>
+                        <Link to="/pedidomultiple" style={{ color: "#4f4f4f" }}>
+                          <MDBDropdownItem link>
+                            Pedido múltiple
+                          </MDBDropdownItem>
+                        </Link>
+                        <Link to="/graficapedidos" style={{ color: "#4f4f4f" }}>
+                          <MDBDropdownItem link>
+                            Grafica de pedidos
+                          </MDBDropdownItem>
+                        </Link>
+                      </>
                     ) : null}
                   </MDBDropdownMenu>
                 </MDBDropdown>
@@ -110,8 +119,7 @@ function Menu() {
 
             {/* Botones alineados a la derecha */}
             <div className="d-flex justify-content-end">
-              {user === undefined ? ( // usuario no logueado
-                <>
+              
                   <Link to="/signup">
                     <MDBBtn size="sm" className="me-2">
                       SignUp
@@ -120,15 +128,15 @@ function Menu() {
                   <Link to="/login">
                     <MDBBtn size="sm">Login</MDBBtn>
                   </Link>
-                </>
-              ) : (
-                <>
-                  <span className="mx-2">Hola, {user.username}</span>
+               
+             
+                
+                  {/* <span className="mx-2">Hola, {user.username}</span>
                   <MDBBtn size="sm" color="danger" onClick={logout}>
                     Logout
-                  </MDBBtn>
-                </>
-              )}
+                  </MDBBtn> */}
+               
+            
             </div>
           </MDBNavbarNav>
         </MDBCollapse>

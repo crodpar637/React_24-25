@@ -18,6 +18,7 @@ import PedidoMultiple from "./components/PedidoMultiple";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SignUp from "./components/Signup";
 import Unauthorized from "./components/Unauthorized";
+import GraficaPedidos from "./components/GraficaPedidos";
 
 import Home from "./pages/Home";
 import PaginaError from "./pages/PaginaError";
@@ -72,6 +73,10 @@ let router = createBrowserRouter([
           {
             path: "pedidomultiple",
             element: <PedidoMultiple />,
+          },
+          {
+            path: "graficapedidos",
+            element: <GraficaPedidos />,
           },
         ],
       },

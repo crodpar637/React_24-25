@@ -105,7 +105,12 @@ Zustand es una biblioteca de gestión de estado para aplicaciones en React. Se d
 npm install zustand
 
 -----------------------------------------------
+Recharts
+Librería para crear gráficas
 
+npm install recharts
+
+------------------------------------------------
 
 // Instalar las siguientes extensiones en VSCode:
 ESLint: un linter, que es una herramienta que detecta errores en el código.

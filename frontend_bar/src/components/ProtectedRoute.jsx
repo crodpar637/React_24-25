@@ -7,12 +7,12 @@ const ProtectedRoute = ({ allowedRoles }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (!user) {  // User no logueado 
       navigate("/login", { replace: true });
       return;
     }
 
-    if (!allowedRoles.includes(user.role)) {
+    if (!allowedRoles.includes(user.role)) {  // Rol no permite acceso
       navigate("/unauthorized", { replace: true });
     }
   }, [user, allowedRoles, navigate]); // Se ejecuta cuando cambia user o allowedRoles

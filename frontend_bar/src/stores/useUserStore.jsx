@@ -6,9 +6,9 @@ const useUserStore = create(
   
     persist(
       (set) => ({
-        user: null, // Estado inicial sin usuario
+        user: { rol: "None"}, // Estado inicial sin usuario
         setUser: (userData) => set({ user: userData }),
-        clearUser: () => set({ user: null }),
+        clearUser: () => set({ user: { rol: "None"} }),
       }),
       {
         name: "user-storage", // Clave en sessionStorage

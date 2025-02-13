@@ -73,7 +73,7 @@ function Menu() {
                     Tapas
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
-                    {user !== null && (
+                    {user !== undefined  && (
                       <Link to="/altaplato" style={{ color: "#4f4f4f" }}>
                         <MDBDropdownItem link>Alta de platos</MDBDropdownItem>
                       </Link>
@@ -90,19 +90,19 @@ function Menu() {
                     Pedidos
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
-                    {user !== null && (
+                    {user !== undefined ? (
                       <MDBDropdownItem link>
                         Alta de pedidos (no implementado)
                       </MDBDropdownItem>
-                    )}
+                    ) : null}
                     <Link to="/listadopedidos" style={{ color: "#4f4f4f" }}>
                       <MDBDropdownItem link>Listado de pedidos</MDBDropdownItem>
                     </Link>
-                    {user != null && (
+                    {user !== undefined  ? (
                       <Link to="/pedidomultiple" style={{ color: "#4f4f4f" }}>
                         <MDBDropdownItem link>Pedido múltiple</MDBDropdownItem>
                       </Link>
-                    )}
+                    ) : null}
                   </MDBDropdownMenu>
                 </MDBDropdown>
               </MDBNavbarItem>
@@ -110,7 +110,7 @@ function Menu() {
 
             {/* Botones alineados a la derecha */}
             <div className="d-flex justify-content-end">
-              {user === null ? (
+              {user === undefined ? ( // usuario no logueado
                 <>
                   <Link to="/signup">
                     <MDBBtn size="sm" className="me-2">
@@ -124,7 +124,7 @@ function Menu() {
               ) : (
                 <>
                   <span className="mx-2">Hola, {user.username}</span>
-                  <MDBBtn size="sm" onClick={logout}>
+                  <MDBBtn size="sm" color="danger" onClick={logout}>
                     Logout
                   </MDBBtn>
                 </>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { apiUrl } from "../config";
-import { PieChart, Pie, Cell, Legend, Tooltip, Label } from "recharts";
+import { PieChart, Pie, Cell, Legend, Tooltip, Label , LabelList, Text} from "recharts";
 
 
 function GraficaPedidos() {
@@ -94,33 +94,40 @@ function GraficaPedidos() {
           nameKey="nombre"
           cx="50%"
           cy="50%"
-          outerRadius={60}
+          outerRadius={80}
+          innerRadius={20}
           fill="#8884d8"
+          label
         >
           {datos.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
+          <Label value="Unidades vendidas" offset={70} position="outside" />
+          <Tooltip />
         </Pie>
+        <Legend verticalAlign="top" height={50} />
       </PieChart>
 
       <PieChart width={700} height={400}>
+        <Text value="Ingresos" offset={70} position="outside" />
         <Pie
           data={datos}
           dataKey="ingresos"
           nameKey="nombre"
           cx="50%"
           cy="50%"
-          innerRadius={70}
-          outerRadius={90}
+          innerRadius={20}
+          outerRadius={80}
           fill="#82ca9d"
           label
         >
           {datos.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
-          <Label value="prueba" offset={0} position="outside" />
+         
+          <LabelList dataKey="nombre" offset={70} position="outside" />
         </Pie>
-        <Legend verticalAlign="top" height={50} />
+       
         <Tooltip />
       </PieChart>
     </>

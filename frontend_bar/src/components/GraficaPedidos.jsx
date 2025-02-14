@@ -1,7 +1,19 @@
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
+import {
+  Cell,
+  Label,
+  LabelList,
+  Legend,
+  Pie,
+  PieChart,
+  Text,
+  Tooltip,
+} from "recharts";
 import { apiUrl } from "../config";
-import { PieChart, Pie, Cell, Legend, Tooltip, Label , LabelList, Text} from "recharts";
-
+import generatePDF from "../utils/generatePDF";
+import Typography from "@mui/material/Typography";
 
 function GraficaPedidos() {
   const [datos, setDatos] = useState([]);
@@ -107,29 +119,41 @@ function GraficaPedidos() {
         </Pie>
         <Legend verticalAlign="top" height={50} />
       </PieChart>
+      <Box id="pdf-content">
+        <Typography variant="h4" align="center" sx={{ mt: 4 }}>
+          Ingresos por producto
+        </Typography>
+        <PieChart width={700} height={400}>
+          <Text value="Ingresos" offset={70} position="outside" />
+          <Pie
+            data={datos}
+            dataKey="ingresos"
+            nameKey="nombre"
+            cx="50%"
+            cy="50%"
+            innerRadius={20}
+            outerRadius={80}
+            fill="#82ca9d"
+            label
+          >
+            {datos.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
 
-      <PieChart width={700} height={400}>
-        <Text value="Ingresos" offset={70} position="outside" />
-        <Pie
-          data={datos}
-          dataKey="ingresos"
-          nameKey="nombre"
-          cx="50%"
-          cy="50%"
-          innerRadius={20}
-          outerRadius={80}
-          fill="#82ca9d"
-          label
-        >
-          {datos.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-         
-          <LabelList dataKey="nombre" offset={70} position="outside" />
-        </Pie>
-       
-        <Tooltip />
-      </PieChart>
+            <LabelList dataKey="nombre" offset={70} position="outside" />
+          </Pie>
+
+          <Tooltip />
+        </PieChart>
+      </Box>
+      <Box sx={{ mx: 4, mt: 2 }}>
+        <Button variant="contained" onClick={generatePDF}>
+          Imprimir listado (jsPDF + html2canvas)
+        </Button>
+      </Box>
     </>
   );
 }

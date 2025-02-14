@@ -64,7 +64,7 @@ export default function App() {
         <Tab.Screen
           name="Tech"
           component={News}
-          initialParams={{ category: "tech" }}
+          initialParams={{ category: "technology" }}
           options={{
             tabBarIcon: (props) => (
               <Icon

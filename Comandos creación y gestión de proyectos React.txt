@@ -111,6 +111,20 @@ Librería para crear gráficas
 npm install recharts
 
 ------------------------------------------------
+Impresión de pdf a partir de HTML como imágen
+jsPDF + html2canvas
+
+npm i html2canvas jspdf
+
+Ver código de src/utils/generatePDF.js
+
+-------------------------------------------
+Impresión de pdf diseñando el informe
+react-pdf
+
+npm install @react-pdf/renderer --save
+
+-------------------------------------------
 
 // Instalar las siguientes extensiones en VSCode:
 ESLint: un linter, que es una herramienta que detecta errores en el código.

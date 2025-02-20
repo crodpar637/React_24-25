@@ -1,4 +1,6 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import "@/global.css";
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { HomeScreen } from './navigation/screens/Home';
 import { AltaScreen } from './navigation/screens/Alta';
 import { ListadoScreen } from './navigation/screens/Listado';
@@ -17,5 +19,5 @@ const MyDrawer = createDrawerNavigator({
 const Navigation = createStaticNavigation(MyDrawer);
 
 export default function App() {
-  return <Navigation />;
+  return <GluestackUIProvider mode="light"><Navigation /></GluestackUIProvider>;
 }

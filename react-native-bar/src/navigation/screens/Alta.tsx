@@ -1,10 +1,10 @@
-import { Text } from '@react-navigation/elements';
+import { Button, Text } from '@react-navigation/elements';
 import { StyleSheet, View } from 'react-native';
 
-export function Updates() {
+export function AltaScreen() {
   return (
     <View style={styles.container}>
-      <Text>Updates Screen</Text>
+      <Text>Alta Screen</Text>
     </View>
   );
 }

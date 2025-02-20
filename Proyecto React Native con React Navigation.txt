@@ -1,0 +1,11 @@
+Proyecto React Native con React Navigation
+
+// Crear plantilla de proyecto
+npx create-expo-app@latest --template react-navigation/template
+
+
+// Instalación de librerías
+npm install @react-navigation/native
+
+npx expo install react-native-screens react-native-safe-area-context
+

@@ -6,7 +6,7 @@ set-executionpolicy unrestricted
 // Crear proyecto con Vite
 npm create vite@latest helloworld
 
-// Continuamos instalando las librerias básicas de react
+// Instalación de las librerias básicas de React
 cd helloworld
 npm install
 
@@ -105,26 +105,7 @@ Zustand es una biblioteca de gestión de estado para aplicaciones en React. Se d
 npm install zustand
 
 -----------------------------------------------
-Recharts
-Librería para crear gráficas
 
-npm install recharts
-
-------------------------------------------------
-Impresión de pdf a partir de HTML como imágen
-jsPDF + html2canvas
-
-npm i html2canvas jspdf
-
-Ver código de src/utils/generatePDF.js
-
--------------------------------------------
-Impresión de pdf diseñando el informe
-react-pdf
-
-npm install @react-pdf/renderer --save
-
--------------------------------------------
 
 // Instalar las siguientes extensiones en VSCode:
 ESLint: un linter, que es una herramienta que detecta errores en el código.

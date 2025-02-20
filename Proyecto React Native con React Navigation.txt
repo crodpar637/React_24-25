@@ -1,4 +1,4 @@
-Proyecto React Native con React Navigation
+Proyecto React Native con React Navigation y Expo
 
 // Instalación de Expo de forma global
 npm install --global expo-cli
@@ -6,8 +6,24 @@ npm install --global expo-cli
 // Crear plantilla de proyecto
 npx create-expo-app@latest --template react-navigation/template
 
+// Entrar en el directorio del proyecto
+cd react-native-bar
+
 // Instalación de librerías
 npm install @react-navigation/native
 
 npx expo install react-native-screens react-native-safe-area-context
+
+// Instalación de resto de librerías
+npm install
+
+// Iniciar ejecución del proyecto
+npm start
+
+// Visualizar versión web o utilizar Expo Go para ver en el móvil
+
+
+// Instalación de componente Navegador Drawer (menú lateral)
+npm install @react-navigation/drawer
+
 

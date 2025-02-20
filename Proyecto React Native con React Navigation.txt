@@ -1,8 +1,10 @@
 Proyecto React Native con React Navigation
 
+// Instalación de Expo de forma global
+npm install --global expo-cli
+
 // Crear plantilla de proyecto
 npx create-expo-app@latest --template react-navigation/template
-
 
 // Instalación de librerías
 npm install @react-navigation/native

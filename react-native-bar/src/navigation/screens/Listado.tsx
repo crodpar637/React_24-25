@@ -40,7 +40,7 @@ export function ListadoScreen() {
     <>
       <ScrollView>
         {datos.map((plato) => (
-          <Card className="p-5 rounded-lg max-w-[360px] m-3">
+          <Card key={plato.idplato} className="p-5 rounded-lg max-w-[360px] m-3">
             {/* <Image
             source={{
               uri: "https://gluestack.github.io/public-blog-video-assets/yoga.png",

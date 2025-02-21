@@ -22,9 +22,9 @@ import { useNavigate } from "react-router";
 
 function Menu() {
   const [openBasic, setOpenBasic] = useState(false);
-  const { user, clearUser } = useUserStore();
+  const { user, clearUser, isAdmin, isUser, isLoggedIn } = useUserStore();
   const navigate = useNavigate();
-
+ 
   const logout = async () => {
     try {
       const response = await fetch(apiUrl + "/users/logout", {
@@ -73,11 +73,11 @@ function Menu() {
                     Tapas
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
-                    {user !== undefined && (
+                   
                       <Link to="/altaplato" style={{ color: "#4f4f4f" }}>
                         <MDBDropdownItem link>Alta de platos</MDBDropdownItem>
                       </Link>
-                    )}
+             
                     <Link to="/listadoplatos" style={{ color: "#4f4f4f" }}>
                       <MDBDropdownItem link>Listado de platos</MDBDropdownItem>
                     </Link>
@@ -119,24 +119,19 @@ function Menu() {
 
             {/* Botones alineados a la derecha */}
             <div className="d-flex justify-content-end">
-              
-                  <Link to="/signup">
-                    <MDBBtn size="sm" className="me-2">
-                      SignUp
-                    </MDBBtn>
-                  </Link>
-                  <Link to="/login">
-                    <MDBBtn size="sm">Login</MDBBtn>
-                  </Link>
-               
-             
-                
-                  {/* <span className="mx-2">Hola, {user.username}</span>
+              <Link to="/signup">
+                <MDBBtn size="sm" className="me-2">
+                  SignUp
+                </MDBBtn>
+              </Link>
+              <Link to="/login">
+                <MDBBtn size="sm">Login</MDBBtn>
+              </Link>
+
+              {/* <span className="mx-2">Hola, {user.username}</span>
                   <MDBBtn size="sm" color="danger" onClick={logout}>
                     Logout
                   </MDBBtn> */}
-               
-            
             </div>
           </MDBNavbarNav>
         </MDBCollapse>

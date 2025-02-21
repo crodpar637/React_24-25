@@ -2,7 +2,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import "@/global.css";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { HomeScreen } from './navigation/screens/Home';
-import { AltaScreen } from './navigation/screens/Alta';
+import  AltaScreen  from './navigation/screens/Alta';
 import { ListadoScreen } from './navigation/screens/Listado';
 import {
   createStaticNavigation,

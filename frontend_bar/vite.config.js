@@ -9,4 +9,9 @@ export default defineConfig(({ mode }) => ({
     outDir: mode === 'development' ? 'dist-dev' : 'dist',  // Carpeta de salida distinta
   },
   plugins: [react()],
+  test: {
+    globals: true, // Permite usar `describe`, `test`, `expect` sin importar Vitest
+    environment: "jsdom", // Simula un entorno de navegador
+    setupFiles: "./src/setupTests.js", // Archivo opcional para configuración global
+  },
 }));

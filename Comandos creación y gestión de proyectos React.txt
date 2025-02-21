@@ -105,8 +105,34 @@ Zustand es una biblioteca de gestión de estado para aplicaciones en React. Se d
 npm install zustand
 
 -----------------------------------------------
+// Instalación de librerias de testing: vitest
+npm install --save-dev vitest @testing-library/react @testing-library/jest-dom jsdom
 
+// Configura el entorno de test en ./vite.config.js
 
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig(({ mode }) => ({
+  build: {
+    sourcemap: mode === 'development',  // Mantener los sourcemaps en desarrollo
+    minify: mode !== 'development',     // Desactivar minificación en desarrollo
+    outDir: mode === 'development' ? 'dist-dev' : 'dist',  // Carpeta de salida distinta
+  },
+  plugins: [react()],
+  test: {
+    globals: true, // Permite usar `describe`, `test`, `expect` sin importar Vitest
+    environment: "jsdom", // Simula un entorno de navegador
+    setupFiles: "./src/setupTests.js", // Archivo opcional para configuración global
+  },
+}));
+
+// Crea, si no existe:  ./src/setupTests.js:
+
+import "@testing-library/jest-dom";
+
+--------------------------------------------------------------------------
 // Instalar las siguientes extensiones en VSCode:
 ESLint: un linter, que es una herramienta que detecta errores en el código.
 Babel Javascript: resalta la sintaxis de React.js

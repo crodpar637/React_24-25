@@ -1,6 +1,11 @@
 import Menu from "../components/Menu";
 import { Box, Button, Typography } from "@mui/material";
 
+/**
+ * Componente de página de error.
+ * Muestra un mensaje de error y un botón para volver a la página principal.
+ * @returns {JSX.Element} - Componente de página de error.
+ */
 function PaginaError() {
   return (
     <>
@@ -16,4 +21,5 @@ function PaginaError() {
     </>
   );
 }
+
 export default PaginaError;

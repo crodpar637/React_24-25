@@ -1,5 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
 
+/**
+ * Componente que muestra un mensaje de no autorización.
+ * @component
+ * @returns {JSX.Element} JSX element del componente Unauthorized.
+ */
 function Unauthorized() {
   return (
     <>
@@ -14,4 +19,5 @@ function Unauthorized() {
     </>
   );
 }
+
 export default Unauthorized;

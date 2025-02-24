@@ -2,6 +2,13 @@ import { useEffect } from "react";
 import { useNavigate, Outlet } from "react-router";
 import useUserStore from "../stores/useUserStore";
 
+/**
+ * Componente para proteger rutas según roles de usuario.
+ * @component
+ * @param {Object} props - Propiedades del componente.
+ * @param {Array<string>} props.allowedRoles - Roles permitidos para acceder a la ruta.
+ * @returns {JSX.Element|null} JSX element del componente ProtectedRoute o null.
+ */
 const ProtectedRoute = ({ allowedRoles }) => {
   const { user } = useUserStore();
   const navigate = useNavigate();

@@ -23,7 +23,9 @@ import GraficaPedidos from "./components/GraficaPedidos";
 import Home from "./pages/Home";
 import PaginaError from "./pages/PaginaError";
 
-
+/**
+ * Configuración de las rutas de la aplicación.
+ */
 let router = createBrowserRouter([
   {
     path: "/",
@@ -84,7 +86,9 @@ let router = createBrowserRouter([
   },
 ]);
 
-
+/**
+ * Renderiza la aplicación en el elemento con el ID "root".
+ */
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />

@@ -20,11 +20,19 @@ import { apiUrl } from "../config";
 import useUserStore from "../stores/useUserStore";
 import { useNavigate } from "react-router";
 
+/**
+ * Componente para el menú de navegación.
+ * @component
+ * @returns {JSX.Element} JSX element del componente Menu.
+ */
 function Menu() {
   const [openBasic, setOpenBasic] = useState(false);
   const { user, clearUser, isAdmin, isUser, isLoggedIn } = useUserStore();
   const navigate = useNavigate();
  
+  /**
+   * Maneja el cierre de sesión del usuario.
+   */
   const logout = async () => {
     try {
       const response = await fetch(apiUrl + "/users/logout", {

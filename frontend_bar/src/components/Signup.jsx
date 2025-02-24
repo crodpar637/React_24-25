@@ -4,6 +4,11 @@ import { apiUrl } from "../config";
 import Grid from "@mui/material/Grid2";
 import { useNavigate } from "react-router";
 
+/**
+ * Componente para el registro de usuarios.
+ * @component
+ * @returns {JSX.Element} JSX element del componente SignUp.
+ */
 function SignUp() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -15,11 +20,19 @@ function SignUp() {
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
 
+  /**
+   * Maneja el cambio en los campos del formulario.
+   * @param {Object} e - Evento de cambio.
+   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  /**
+   * Valida los datos del formulario.
+   * @returns {boolean} True si los datos son válidos, false en caso contrario.
+   */
   const validate = () => {
     const newErrors = {};
     if (!formData.username.trim()) {
@@ -42,6 +55,10 @@ function SignUp() {
     return Object.keys(newErrors).length === 0; // Devuelve true si no hay errores
   };
 
+  /**
+   * Maneja el envío del formulario.
+   * @param {Object} e - Evento de envío.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;

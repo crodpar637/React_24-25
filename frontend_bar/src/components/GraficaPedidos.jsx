@@ -15,6 +15,75 @@ import { apiUrl } from "../config";
 import generatePDF from "../utils/generatePDF";
 import Typography from "@mui/material/Typography";
 
+/**
+ * Componente React que muestra gráficos de pedidos utilizando gráficos de pastel (PieChart).
+ * 
+ * @component
+ * @example
+ * return (
+ *   <GraficaPedidos />
+ * )
+ * 
+ * @returns {JSX.Element} Un componente que renderiza dos gráficos de pastel y un botón para imprimir un PDF.
+ * 
+ * @description
+ * Este componente obtiene datos de pedidos desde una API y los muestra en dos gráficos de pastel:
+ * uno para las ventas y otro para los ingresos. También incluye un botón para generar un PDF del contenido.
+ * 
+ * @function
+ * @name GraficaPedidos
+ * 
+ * @property {Array} datos - Estado que almacena los datos de los pedidos.
+ * @property {Array} COLORS - Array de colores para los gráficos.
+ * 
+ * @requires useState - Hook de React para manejar el estado del componente.
+ * @requires useEffect - Hook de React para manejar efectos secundarios en el componente.
+ * @requires fetch - Función para realizar solicitudes HTTP.
+ * @requires PieChart, Pie, Cell, Tooltip, Legend, Label, LabelList - Componentes de la librería 'recharts' para gráficos.
+ * @requires Box, Typography, Button - Componentes de la librería '@mui/material' para la interfaz de usuario.
+ * 
+ * @function getDatosGraficaPedidos
+ * @description Función asíncrona que obtiene los datos de la API y actualiza el estado 'datos'.
+ * 
+ * @function generatePDF
+ * @description Función que genera un PDF del contenido utilizando jsPDF y html2canvas.
+ */
+/**
+ * GraficaPedidos is a React functional component that fetches and displays sales and income data
+ * in two pie charts using the Recharts library. The data is fetched from an API endpoint and 
+ * processed to remove attributes containing a dot in their name.
+ *
+ * @component
+ * @example
+ * return (
+ *   <GraficaPedidos />
+ * )
+ *
+ * @returns {JSX.Element} A React component that renders two pie charts and a button to generate a PDF.
+ *
+ * @function
+ * @name GraficaPedidos
+ *
+ * @description
+ * - Fetches sales and income data from the API endpoint "/pedidos/grafica".
+ * - Processes the data to remove attributes containing a dot in their name.
+ * - Displays the sales data in a pie chart with a legend and tooltips.
+ * - Displays the income data in another pie chart with a legend and tooltips.
+ * - Provides a button to generate a PDF of the displayed data using jsPDF and html2canvas.
+ *
+ * @requires useState
+ * @requires useEffect
+ * @requires PieChart
+ * @requires Pie
+ * @requires Cell
+ * @requires Tooltip
+ * @requires Legend
+ * @requires Label
+ * @requires LabelList
+ * @requires Box
+ * @requires Typography
+ * @requires Button
+ */
 function GraficaPedidos() {
   const [datos, setDatos] = useState([]);
 
@@ -99,6 +168,7 @@ function GraficaPedidos() {
 
   return (
     <>
+      {/* Gráfico de pastel para las ventas */}
       <PieChart width={700} height={400}>
         <Pie
           data={datos}
@@ -119,10 +189,14 @@ function GraficaPedidos() {
         </Pie>
         <Legend verticalAlign="top" height={50} />
       </PieChart>
+
+      {/* Contenedor para el contenido del PDF */}
       <Box id="pdf-content">
         <Typography variant="h4" align="center" sx={{ mt: 4 }}>
           Ingresos por producto
         </Typography>
+
+        {/* Gráfico de pastel para los ingresos */}
         <PieChart width={700} height={400}>
           <Text value="Ingresos" offset={70} position="outside" />
           <Pie
@@ -142,13 +216,13 @@ function GraficaPedidos() {
                 fill={COLORS[index % COLORS.length]}
               />
             ))}
-
             <LabelList dataKey="nombre" offset={70} position="outside" />
           </Pie>
-
           <Tooltip />
         </PieChart>
       </Box>
+
+      {/* Botón para generar el PDF */}
       <Box sx={{ mx: 4, mt: 2 }}>
         <Button variant="contained" onClick={generatePDF}>
           Imprimir listado (jsPDF + html2canvas)

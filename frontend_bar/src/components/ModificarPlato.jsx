@@ -4,6 +4,11 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { apiUrl } from "../config";
 
+/**
+ * Componente para modificar un plato existente.
+ * @component
+ * @returns {JSX.Element} JSX element del componente ModificarPlato.
+ */
 function ModificarPlato() {
   const params = useParams();
   const [datos, setDatos] = useState({
@@ -36,6 +41,10 @@ function ModificarPlato() {
     getPlatoById();
   }, []); // Se ejecuta solo en el primer renderizado
 
+  /**
+   * Maneja el envío del formulario.
+   * @param {Object} e - Evento de envío.
+   */
   const handleSubmit = async (e) => {
     // No hacemos submit
     e.preventDefault();
@@ -68,6 +77,10 @@ function ModificarPlato() {
     }
   };
 
+  /**
+   * Valida los datos del formulario.
+   * @returns {boolean} True si los datos son válidos, false en caso contrario.
+   */
   function validarDatos() {
     // En principio, damos por bueno el formulario
     let validado = true;
@@ -107,6 +120,11 @@ function ModificarPlato() {
     console.log("Formulario valido:", validado);
     return validado;
   }
+
+  /**
+   * Maneja el cambio en los campos del formulario.
+   * @param {Object} e - Evento de cambio.
+   */
   const handleChange = (e) => {
     setDatos({
       ...datos,

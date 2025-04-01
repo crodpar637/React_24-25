@@ -1,4 +1,4 @@
-Proyecto React Native con React Navigation y Expo
+# Proyecto React Native con React Navigation y Expo
 
 // Instalación de Expo de forma global
 npm install --global expo-cli
@@ -17,13 +17,20 @@ npx expo install react-native-screens react-native-safe-area-context
 // Instalación de resto de librerías
 npm install
 
+
+// Instalación de componente Navegador Drawer (menú lateral)
+npm install @react-navigation/drawer
+npx expo install react-native-gesture-handler react-native-reanimated
+
+// Librería Gluestack de componentes para React Native
+npx gluestack-ui init
+// Agregar componente Card y otros más al proyecto
+npx gluestack-ui add card heading hstack text image link icon 
+
+
 // Iniciar ejecución del proyecto
 npm start
 
 // Visualizar versión web o utilizar Expo Go para ver en el móvil
-
-
-// Instalación de componente Navegador Drawer (menú lateral)
-npm install @react-navigation/drawer
 
 

@@ -3,6 +3,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
+/**
+ * Componente que muestra una tarjeta con la información de un personaje.
+ * @component
+ * @param {object} props - Las propiedades del componente.
+ * @param {object} props.person - Los datos del personaje.
+ * @returns {JSX.Element} Un elemento JSX que representa la tarjeta del personaje.
+ */
 function PersonCard({ person }) {
   return (
     <>
@@ -14,7 +21,7 @@ function PersonCard({ person }) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-          {person.name}
+            {person.name}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
             Mass: {person.mass}
@@ -31,4 +38,5 @@ function PersonCard({ person }) {
     </>
   );
 }
+
 export default PersonCard;

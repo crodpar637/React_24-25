@@ -44,14 +44,14 @@ npm i mdb-react-ui-kit
 // Intalación de fontawesome
 npm i @fortawesome/fontawesome-free
 
-// Importación de css
+// Importación de css en App.jsx
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 // Importación de Roboto en index.html
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
 
-// Establecer fuente en index.css
+// Establecer fuente en App.css
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
@@ -72,7 +72,7 @@ import {
 let router = createBrowserRouter([
   {
     path: "/",
-    Component: Root,
+    element: <Home />,
     children: [
       {
         path: "shows/:showId",

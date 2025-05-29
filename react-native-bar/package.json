@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.tsx",
   "scripts": {
-    "start": "expo start --dev-client",
-    "web": "DARK_MODE=media expo start --web",
-    "android": "DARK_MODE=media expo run:android",
-    "ios": "DARK_MODE=media expo run:ios"
+    "start": "npx expo start --dev-client",
+    "web": "DARK_MODE=media npx expo start --web",
+    "android": "DARK_MODE=media npx expo run:android",
+    "ios": "DARK_MODE=media npx expo run:ios"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",

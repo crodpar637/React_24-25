@@ -64,7 +64,7 @@ function PersonPage() {
   if (isLoading) {
     return (
       <>
-        <Typography gutterBottom variant="h4" align="center">
+        <Typography gutterBottom={true} variant="h4" align="center">
           Personajes de Star Wars
         </Typography>
         <CircularProgress />

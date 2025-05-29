@@ -66,7 +66,7 @@ function AltaPlato() {
             sx={{ mx: 2 }}
           >
             <TextField
-              id="outlined-basic"
+              id="nombre"
               label="Nombre"
               variant="outlined"
               name="nombre"
@@ -74,7 +74,7 @@ function AltaPlato() {
               onChange={handleChange}
             />
             <TextField
-              id="outlined-basic"
+              id="descripcion"
               label="Descripcion"
               variant="outlined"
               name="descripcion"
@@ -82,7 +82,7 @@ function AltaPlato() {
               onChange={handleChange}
             />
             <TextField
-              id="outlined-basic"
+              id="precio"
               label="Precio"
               variant="outlined"
               name="precio"

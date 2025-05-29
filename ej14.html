@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="salida">   </div>
+    <script>
+        //Declarar el objeto
+        let objeto = {};
+        // Asociar valores al objeto. Agregamos propiedades y valores al objeto
+        objeto.coche = "Seat";
+        objeto.modelo = "Panda";
+        objeto.matricula = "2345RTY";
+        objeto.color = "rojo";
+
+        let textoSalida = "";
+        //Recorrer las propiedades del objeto
+        for (let clave in objeto) {
+            textoSalida += clave + ": " + objeto[clave] + "<br>";
+            // document.write(clave + ": " + objeto[clave] + "<br>");
+        }
+
+        document.querySelector("#salida").innerHTML = textoSalida;
+        // Mostrar la información del valor de una posición del array
+        alert(objeto["modelo"] + objeto.modelo);
+
+
+        // "Array asociativo" de capitales andaluzas
+        let capitalesAndaluzas = {};
+        capitalesAndaluzas["Almería"] = 100000;
+        capitalesAndaluzas.Cádiz = 90000;
+        capitalesAndaluzas.Córdoba = 200000;
+        capitalesAndaluzas["Granada"] = 175000;
+        capitalesAndaluzas["Huelva"] = 60000;
+        capitalesAndaluzas["Jaén"] = 45000;
+        capitalesAndaluzas["Málaga"] = 600000;
+        capitalesAndaluzas["Sevilla"] = 700000;
+        capitalesAndaluzas["Mérida"] = undefined; // No se ha definido un valor para Mérida
+        textoSalida = "";
+        for (let clave in capitalesAndaluzas) {
+            textoSalida += clave + ": " + capitalesAndaluzas[clave] + "<br>";
+        }
+        document.querySelector("#salida").innerHTML += textoSalida;
+    </script>
+</body>
+
+</html>

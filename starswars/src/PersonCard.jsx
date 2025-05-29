@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
  * @returns {JSX.Element} Un elemento JSX que representa la tarjeta del personaje.
  */
 function PersonCard({ person }) {
-  return (
+  return (    
     <>
       <Card sx={{ maxWidth: 200 }}>
         <CardMedia

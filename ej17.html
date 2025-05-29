@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="salida">   </div>
+    <script>
+        let alumno = {
+            nombre: "Juan",
+            apellido: "Ramos",
+            edad: 20,
+            telefono: "654321987"
+        };
+
+        let indices = [];
+
+        for (indice in alumno) { 
+            if (indice.length >=6 )
+                indices.push(indice);
+        }
+
+        
+        let textoSalida = "Indices con 6 o más caracteres:<br>"
+
+        for(let indice of indices) {
+            textoSalida += indice + "- Valor:" + alumno[indice] +"<br>";
+        }
+
+        document.querySelector("#salida").innerHTML = textoSalida;
+
+    </script>
+</body>
+
+</html>

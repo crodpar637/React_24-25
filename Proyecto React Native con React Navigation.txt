@@ -24,6 +24,9 @@ npx expo install react-native-gesture-handler react-native-reanimated
 
 // Librería Gluestack de componentes para React Native
 npx gluestack-ui init
+
+
+
 // Agregar componente Card y otros más al proyecto
 npx gluestack-ui add card heading hstack text image link icon 
 

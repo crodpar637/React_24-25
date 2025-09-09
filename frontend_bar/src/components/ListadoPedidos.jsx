@@ -22,7 +22,7 @@ import {
 const styles = StyleSheet.create({
   page: { padding: 20 },
   title: {
-    fontSize: 16,
+    fontSize: 24,
     marginBottom: 10,
     textAlign: "center",
     fontWeight: "bold",
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 1,
     marginBottom: 10,
+    fontSize: 10,
   },
   tableRow: { flexDirection: "row" },
   tableColHeader: {

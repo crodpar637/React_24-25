@@ -6,7 +6,7 @@ import "./App.css";
  * @description Componente principal de la aplicación que muestra una imagen aleatoria de un perro.
  * @returns {JSX.Element} El componente App.
  */
-function App() {
+function App()  {
   const [imagenURL, setImagenURL] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

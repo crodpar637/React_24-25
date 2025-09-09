@@ -17,7 +17,7 @@ function App() {
   let router = createBrowserRouter([
   {
     path: "/",
-    Component: <Home />,
+    element: <Home />,
     children: [
       {
         path: "ejercicio2",

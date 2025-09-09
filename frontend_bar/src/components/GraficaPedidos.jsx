@@ -158,8 +158,8 @@ function GraficaPedidos() {
           };
         });
         setDatos(datosGrafica);
-        // console.log(data.datos);
-        // console.log(datosGrafica);
+        console.log(data.datos);
+        console.log(datosGrafica);
       }
     }
 
